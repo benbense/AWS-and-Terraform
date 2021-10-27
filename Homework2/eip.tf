@@ -1,10 +1,6 @@
-resource "aws_eip" "ngw-eip-1a" {
+resource "aws_eip" "ngw-eip" {
+  count = 2
   tags = {
-    "Name" = "NAT-1a-EIP"
-  }
-}
-resource "aws_eip" "ngw-eip-1b" {
-  tags = {
-    "Name" = "NAT-1b-EIP"
+    "Name" = "NAT-{count.index}"
   }
 }

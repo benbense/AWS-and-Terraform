@@ -13,3 +13,7 @@ variable "instances_to_create" {
 variable "t2-micro" {
   default = "t2.micro"
 }
+
+variable "cidr_size" {
+  default = "10.0.0.0/16"
+}

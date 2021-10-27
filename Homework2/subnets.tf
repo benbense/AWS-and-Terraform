@@ -1,18 +1,10 @@
-
-resource "aws_subnet" "private1a" {
+resource "aws_subnet" "private-subnet" {
+  count = 2
   vpc_id = aws_vpc.Whiskey-VPC.id
-  availability_zone = "us-east-1a"
-  cidr_block = "10.0.1.0/24"
+  availability_zone = data.aws_availability_zones.available.names[count.index]
+  cidr_block = cidrsubnet(var.cidr_size, 8, count.index)
   tags = {
-    "Name" = "private-1a"
-  }
-}
-resource "aws_subnet" "private1b" {
-  vpc_id = aws_vpc.Whiskey-VPC.id
-  availability_zone = "us-east-1b"
-  cidr_block = "10.0.2.0/24"
-  tags = {
-    "Name" = "private-1b"
+    "Name" = "Private-${count.index}"
   }
 }
 
