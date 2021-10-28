@@ -1,8 +1,8 @@
 resource "aws_elb" "web-elb" {
   name = "web-elb"
-  instances = [aws_instance.webserver-1a.id, aws_instance.webserver-1b.id]
+  instances = aws_instance.webservers.*.id
   security_groups = [aws_security_group.inbound-http-any.id, aws_security_group.outbound-any.id]
-  subnets = [aws_subnet.public1a.id, aws_subnet.public1b.id]
+  subnets = aws_subnet.public-subnet.*.id
 
   listener {
     instance_port = 80
