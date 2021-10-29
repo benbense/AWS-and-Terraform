@@ -1,7 +1,7 @@
 
 # Enable TCP access to port 80
 resource "aws_security_group" "inbound-http-any" {
-  vpc_id = aws_vpc.Whiskey-VPC.id
+  vpc_id = aws_vpc.vpc.id
   ingress {
     cidr_blocks = ["0.0.0.0/0"]
     from_port = 80
@@ -15,7 +15,7 @@ resource "aws_security_group" "inbound-http-any" {
 
 # Enable SSH access to port 22
 resource "aws_security_group" "inbound-ssh-any" {
-  vpc_id = aws_vpc.Whiskey-VPC.id
+  vpc_id = aws_vpc.vpc.id
   ingress {
     cidr_blocks = ["0.0.0.0/0"]
     from_port = 22
@@ -29,7 +29,7 @@ resource "aws_security_group" "inbound-ssh-any" {
 
 # Enable instance access to the world
 resource "aws_security_group" "outbound-any" {
-  vpc_id = aws_vpc.Whiskey-VPC.id
+  vpc_id = aws_vpc.vpc.id
   egress {
     from_port   = 0
     to_port     = 0

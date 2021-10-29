@@ -24,7 +24,7 @@ resource "aws_alb_target_group" "webservers" {
   name = "alb-target-group"
   port = 80
   protocol = "HTTP"
-  vpc_id = aws_vpc.Whiskey-VPC.id
+  vpc_id = aws_vpc.vpc.id
   stickiness {
     type = "lb_cookie"
     cookie_duration = 60

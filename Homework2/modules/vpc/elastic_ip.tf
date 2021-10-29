@@ -1,5 +1,5 @@
 resource "aws_eip" "ngw-eip" {
-  count = 2
+  count = length(aws_subnet.private-subnet)
   tags = {
     "Name" = "NAT-{count.index}"
   }
