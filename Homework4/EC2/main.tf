@@ -1,12 +1,3 @@
-module "vpc" {
-  #source             = "..\\..\\..\\modules\\vpc\\"
-  source  = "benbense/ec2/aws"
-  version = "1.0.0"
-  # vpc_name           = var.vpc_name
-  # cidr_size          = var.cidr_size
-  # availability_zones = var.availability_zones
-}
-
 module "ec2" {
   #source               = "..\\..\\..\\modules\\ec2\\"
   source               = "benbense/ec2/aws"

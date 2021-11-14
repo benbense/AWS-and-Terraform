@@ -6,7 +6,7 @@ terraform {
   backend "remote" {
     organization = "opsschool-ben"
     workspaces {
-      name = "AWS-and-Terraform"
+      name = "VPC"
     }
   }
   required_providers {

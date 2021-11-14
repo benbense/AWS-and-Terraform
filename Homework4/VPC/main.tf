@@ -1,6 +1,6 @@
 module "vpc" {
   #source             = "..\\..\\..\\modules\\vpc\\"
-  source  = "benbense/ec2/aws"
+  source  = "benbense/vpc/aws"
   version = "1.0.0"
   # vpc_name           = var.vpc_name
   # cidr_size          = var.cidr_size
