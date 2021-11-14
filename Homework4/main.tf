@@ -4,7 +4,7 @@ module "vpc" {
   version            = "1.0.0"
   vpc_name           = var.vpc_name
   cidr_size          = var.cidr_size
-  availability_zones = 2
+  availability_zones = var.availability_zones
 }
 
 module "ec2" {
