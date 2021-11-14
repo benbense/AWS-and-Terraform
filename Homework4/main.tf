@@ -1,3 +1,6 @@
+provider "aws" {
+  region = var.region
+}
 module "vpc" {
   #source             = "..\\..\\..\\modules\\vpc\\"
   source             = "benbense/ec2/aws"
