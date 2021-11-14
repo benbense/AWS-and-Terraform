@@ -1,8 +1,7 @@
 module "vpc" {
-  source             = "..\\..\\..\\modules\\vpc\\"
-  vpc_name           = var.vpc_name
-  cidr_size          = var.cidr_size
-  availability_zones = 2
+  source  = "benbense/vpc/aws"
+  version = "1.0.0"
+  # Variables are given by the workspace's variables input
 }
 
 module "ec2" {
