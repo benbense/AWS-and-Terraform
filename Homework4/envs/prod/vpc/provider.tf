@@ -4,10 +4,11 @@ provider "aws" {
 }
 
 terraform {
-  backend "s3" {
-    bucket = "ben-opsschool"
-    key    = "terraform/state"
-    region = "us-east-1"
+  backend "remote" {
+    organization = "opsschool-ben"
+    workspaces {
+      name = "AWS-and-Terraform"
+    }
   }
   required_providers {
     aws = {
