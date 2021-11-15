@@ -3,6 +3,10 @@ variable "vpc_name" {
   default     = "Test_VPC"
 }
 
+variable "region" {
+  description = "Region to deploy"
+  default     = "us-east-1"
+}
 variable "cidr_size" {
   description = "CIDR Size"
   default     = "10.0.0.0/16"
