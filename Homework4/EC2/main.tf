@@ -6,7 +6,7 @@ module "ec2" {
   available_zone_names = module.vpc.available_zone_names
   public_subnets_ids   = module.vpc.public_subnets_ids
   private_subnets_ids  = module.vpc.private_subnets_ids
-  # instances_to_create  = var.instances_to_create
-  # instance_type        = var.instance_type
-  # bucket_name          = var.bucket_name
+  instances_to_create  = var.instances_to_create
+  instance_type        = var.instance_type
+  bucket_name          = var.bucket_name
 }
