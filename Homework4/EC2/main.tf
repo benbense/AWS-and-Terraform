@@ -8,7 +8,6 @@ data "terraform_remote_state" "vpc" {
   }
 }
 module "ec2" {
-  #source               = "..\\..\\..\\modules\\ec2\\"
   source               = "app.terraform.io/opsschool-ben/ec2/aws"
   version              = "1.0.0"
   vpc_id               = data.terraform_remote_state.vpc.outputs.vpc_id
