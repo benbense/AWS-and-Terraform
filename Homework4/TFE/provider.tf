@@ -5,6 +5,13 @@ terraform {
       version = "0.26.1"
     }
   }
+
+  backend "remote" {
+    organization = "opsschool-ben"
+    workspaces {
+      name = "TFE"
+    }
+  }
 }
 
 provider "tfe" {
