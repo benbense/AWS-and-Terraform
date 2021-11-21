@@ -3,29 +3,12 @@ resource "tfe_workspace" "tfe" {
   organization = var.tfe_organization_name
   vcs_repo {
     identifier     = "${var.github_user}/AWS-and-Terraform"
-    oauth_token_id = tfe_variable.github_oauth_token
+    oauth_token_id = var.oauth_token_id
     branch         = var.github_branch
   }
   execution_mode      = "remote"
   global_remote_state = true
   working_directory   = "/Homework4/TFE"
-}
-
-resource "tfe_oauth_client" "github" {
-  organization     = var.tfe_organization_name
-  api_url          = "https://api.github.com"
-  http_url         = "https://github.com"
-  service_provider = "github"
-  oauth_token      = var.github_pat
-}
-
-resource "tfe_variable" "github_oauth_token" {
-  key          = "github_oauth_token"
-  value        = tfe_oauth_client.github.oauth_token_id
-  description  = "Generated Github OAuth Token"
-  category     = "terraform"
-  workspace_id = tfe_workspace.tfe.id
-  sensitive    = true
 }
 
 resource "tfe_variable" "tfe_organization_name" {
@@ -44,10 +27,10 @@ resource "tfe_variable" "github_user" {
   workspace_id = tfe_workspace.tfe.id
 }
 
-resource "tfe_variable" "github_pat" {
-  key          = "github_pat"
-  value        = var.github_pat
-  description  = "Github Personal Acess Token"
+resource "tfe_variable" "oauth_token_id" {
+  key          = "oauth_token_id"
+  value        = var.oauth_token_id
+  description  = "Github OAuth Token"
   category     = "terraform"
   workspace_id = tfe_workspace.tfe.id
   sensitive    = true

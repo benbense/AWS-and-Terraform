@@ -8,7 +8,7 @@ variable "github_user" {
   description = "Github Username"
 }
 
-variable "github_pat" {
+variable "oauth_token_id" {
   type        = string
   description = "Github OAuth Token"
 }
