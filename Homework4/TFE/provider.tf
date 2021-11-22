@@ -16,3 +16,8 @@ terraform {
 
 provider "tfe" {
 }
+
+
+data "tfe_oauth_client" "github_oauth" {
+  oauth_client_id = var.oauth_token_id
+}
