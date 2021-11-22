@@ -32,6 +32,7 @@ This will create 2 workspaces which should automaticlly deploy VPC and EC2 envir
 - Turn hardcoded values to variables
 - Create organization automatically
 - Register modules automatically to the organization
+- Add Slack notifications
 
 ## Known Issues
 - [Route tables association might fail to deploy due to timeout](https://github.com/hashicorp/terraform-provider-aws/issues/21032)
