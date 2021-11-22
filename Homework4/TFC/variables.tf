@@ -66,6 +66,6 @@ variable "ec2_workspace_name" {
   type        = string
 }
 variable "vpc_workspace_name" {
-  description = "EC2 Workspace Name"
+  description = "VPC Workspace Name"
   type        = string
 }
