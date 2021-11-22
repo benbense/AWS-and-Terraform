@@ -3,7 +3,7 @@ data "terraform_remote_state" "vpc" {
   config = {
     organization = "opsschool-ben"
     workspaces = {
-      name = "VPC"
+      name = "${var.vpc_workspace_name}"
     }
   }
 }

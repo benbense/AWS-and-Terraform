@@ -12,3 +12,8 @@ variable "bucket_name" {
   description = "Bucket name for ALB logs"
   default     = "ben-opsschool"
 }
+
+variable "vpc_workspace_name" {
+  description = "VPC Workspace Name for Backed State"
+  type        = string
+}
