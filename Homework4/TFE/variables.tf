@@ -13,7 +13,7 @@ variable "oauth_token_id" {
   type        = string
 }
 
-variable "branch" {
+variable "github_branch" {
   description = "Github Branch Name"
   type        = string
 }
@@ -22,4 +22,8 @@ variable "auto_apply" {
   description = "Automatically apply changes on successful plan "
   type        = bool
   default     = false
+}
+
+variable "github_oauth" {
+  description = "Generated Github OAuth"
 }

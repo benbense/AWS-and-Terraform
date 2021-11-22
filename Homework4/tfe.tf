@@ -63,7 +63,7 @@ resource "tfe_variable" "github_branch" {
 
 resource "tfe_variable" "oauth_token_id" {
   key          = "oauth_token_id"
-  value        = tfe_oauth_client.github_oauth.id
+  value        = tfe_oauth_client.github_oauth.oauth_token_id
   description  = "Generated OAuth ID"
   category     = "terraform"
   workspace_id = tfe_workspace.tfe.id

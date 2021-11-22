@@ -3,15 +3,11 @@ resource "tfe_workspace" "vpc" {
   organization = var.tfe_organization_name
   vcs_repo {
     identifier     = "${var.github_user}/AWS-and-Terraform"
-    oauth_token_id = tfe_oauth_client.github_oauth.oauth_token_id
+    oauth_token_id = var.github_oauth
     branch         = var.github_branch
   }
   auto_apply          = var.auto_apply
   global_remote_state = true
   execution_mode      = "remote"
   working_directory   = "/Homework4/VPC"
-}
-
-data "tfe_oauth_client" "github_oauth" {
-  oauth_client_id = var.oauth_token_id
 }
