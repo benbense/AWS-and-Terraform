@@ -23,7 +23,3 @@ variable "auto_apply" {
   type        = bool
   default     = false
 }
-
-variable "github_oauth" {
-  description = "Generated Github OAuth"
-}

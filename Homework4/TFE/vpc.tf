@@ -3,7 +3,7 @@ resource "tfe_workspace" "vpc" {
   organization = var.tfe_organization_name
   vcs_repo {
     identifier     = "${var.github_user}/AWS-and-Terraform"
-    oauth_token_id = var.github_oauth
+    oauth_token_id = var.oauth_token_id
     branch         = var.github_branch
   }
   auto_apply          = var.auto_apply
