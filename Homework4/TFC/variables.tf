@@ -69,3 +69,8 @@ variable "vpc_workspace_name" {
   description = "VPC Workspace Name"
   type        = string
 }
+
+variable "slack_webhook_url" {
+  description = "Slack Webhook URL for Notifications"
+  type        = string
+}

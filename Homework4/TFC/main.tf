@@ -33,15 +33,62 @@ module "ec2" {
     module.vpc
   ]
 }
-resource "tfe_oauth_client" "github_oauth" {
-  organization     = var.tfe_organization_name
-  api_url          = "https://api.github.com"
-  http_url         = "https://github.com"
-  oauth_token      = var.github_pat
-  service_provider = "github"
-}
 
 resource "tfe_run_trigger" "vpc_creation" {
   workspace_id  = module.ec2.ec2_workspace_id
   sourceable_id = module.vpc.vpc_workspace_id
 }
+
+data "tfe_workspace_ids" "all" {
+  names        = ["*"]
+  organization = var.tfe_organization_name
+}
+
+resource "tfe_notification_configuration" "ec2_slack_notifications" {
+  workspace_id     = module.ec2.ec2_workspace_id
+  name             = var.ec2_workspace_name
+  enabled          = true
+  destination_type = "slack"
+  triggers = [
+    "run:created",
+    "run:planning",
+    "run:needs_attention",
+    "run:applying",
+    "run:completed",
+    "run:errored"
+  ]
+  url = var.slack_webhook_url
+}
+resource "tfe_notification_configuration" "vpc_slack_notifications" {
+  workspace_id     = module.vpc.vpc_workspace_id
+  name             = var.vpc_workspace_name
+  enabled          = true
+  destination_type = "slack"
+  triggers = [
+    "run:created",
+    "run:planning",
+    "run:needs_attention",
+    "run:applying",
+    "run:completed",
+    "run:errored"
+  ]
+  url = var.slack_webhook_url
+}
+
+# Notifications by iteration (Not working for some reason)
+# resource "tfe_notification_configuration" "webhook" {
+#   count            = length(data.tfe_workspace_ids.all.ids)
+#   workspace_id     = values(data.tfe_workspace_ids.all.ids)[count.index]
+#   name             = keys(data.tfe_workspace_ids.all.ids)[count.index]
+#   enabled          = true
+#   destination_type = "slack"
+#   triggers = [
+#     "run:created",
+#     "run:planning",
+#     "run:needs_attention",
+#     "run:applying",
+#     "run:completed",
+#     "run:errored"
+#   ]
+#   url = var.slack_webhook_url
+# }
