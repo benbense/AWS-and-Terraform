@@ -74,3 +74,23 @@ variable "slack_webhook_url" {
   description = "Slack Webhook URL for Notifications"
   type        = string
 }
+
+variable "tfe_organization_email" {
+  description = "Terraform Cloud Organization Admin Email Address"
+  type        = string
+}
+
+variable "workspace_repo_identifier" {
+  description = "Github repo identifier for Workspace creation"
+  type        = string
+}
+
+variable "ec2_workspace_directory" {
+  description = "Working directory for EC2 module"
+  type        = string
+}
+
+variable "vpc_workspace_directory" {
+  description = "Working directory for vpc module"
+  type        = string
+}
