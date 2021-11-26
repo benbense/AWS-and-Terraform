@@ -1,6 +1,6 @@
 module "vpc" {
   source                    = "app.terraform.io/opsschool-ben/vpc/tfe"
-  version                   = "1.0.9"
+  version                   = "1.0.10"
   tfe_organization_name     = var.tfe_organization_name
   github_user               = var.github_user
   oauth_token_id            = tfe_oauth_client.github_oauth.oauth_token_id
@@ -14,11 +14,12 @@ module "vpc" {
   vpc_workspace_name        = var.vpc_workspace_name
   workspace_repo_identifier = var.workspace_repo_identifier
   vpc_workspace_directory   = var.vpc_workspace_directory
+  auto_apply                = var.auto_apply
 }
 
 module "ec2" {
   source                    = "app.terraform.io/opsschool-ben/ec2/tfe"
-  version                   = "1.0.8"
+  version                   = "1.0.9"
   tfe_organization_name     = var.tfe_organization_name
   github_user               = var.github_user
   oauth_token_id            = tfe_oauth_client.github_oauth.oauth_token_id
@@ -33,6 +34,8 @@ module "ec2" {
   vpc_workspace_name        = var.vpc_workspace_name
   workspace_repo_identifier = var.workspace_repo_identifier
   ec2_workspace_directory   = var.ec2_workspace_directory
+  auto_apply                = var.auto_apply
+
   depends_on = [
     module.vpc
   ]
