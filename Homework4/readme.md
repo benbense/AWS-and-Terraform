@@ -23,16 +23,18 @@ Required variables:
 | instances_to_create | Number of EC2 instances to create |
 | ec2_workspace_name | EC2 Workspace Name |
 | vpc_workspace_name | VPC Workspace Name |
+| vpc_workspace_directory | Working directory for vpc module |
+| ec2_workspace_directory | Working directory for EC2 module |
+| workspace_repo_identifier | Github repo identifier for Workspace creation |
+| aut_apply | Automatically apply changes when a Terraform plan is successful |
+
 
 This will create 2 workspaces which should automaticlly deploy VPC and EC2 environments separately using  the following modules:
 - [terraform-tfe-vpc](https://github.com/benbense/terraform-tfe-vpc)
 - [terraform-tfe-ec2](https://github.com/benbense/terraform-tfe-ec2)
 
 ## TODOs
-- Turn hardcoded values to variables
-- Create organization automatically
-- Register modules automatically to the organization
-- Add Slack notifications
+- Create organization automatically (Problematic and currently cannot be done)
 
 ## Known Issues
 - [Route tables association might fail to deploy due to timeout](https://github.com/hashicorp/terraform-provider-aws/issues/21032)
